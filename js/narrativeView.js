@@ -9,9 +9,9 @@ define([
         _isInitial: true,
 
         events: {
-            'click .narrative-strapline-title': 'openPopup',
-            'click .narrative-controls': 'onNavigationClicked',
-            'click .narrative-indicators .narrative-progress': 'onProgressClicked'
+            'click .narrative__strapline-title': 'openPopup',
+            'click .narrative__controls': 'onNavigationClicked',
+            'click .narrative__indicators .narrative__progress': 'onProgressClicked'
         },
 
         preRender: function() {
@@ -48,7 +48,7 @@ define([
 
         postRender: function() {
             this.renderState();
-            this.$('.narrative-slider').imageready(this.setReadyStatus.bind(this));
+            this.$('.narrative__slider').imageready(this.setReadyStatus.bind(this));
             this.setupNarrative();
 
             if (Adapt.config.get('_disableAnimation')) {
@@ -118,9 +118,9 @@ define([
 
         replaceInstructions: function() {
             if (Adapt.device.screenSize === 'large') {
-                this.$('.narrative-instruction-inner').html(this.model.get('instruction')).a11y_text();
+                this.$('.narrative__instruction-inner').html(this.model.get('instruction')).a11y_text();
             } else if (this.model.get('mobileInstruction') && !this.model.get('_wasHotgraphic')) {
-                this.$('.narrative-instruction-inner').html(this.model.get('mobileInstruction')).a11y_text();
+                this.$('.narrative__instruction-inner').html(this.model.get('mobileInstruction')).a11y_text();
             }
         },
 
@@ -159,8 +159,8 @@ define([
                 offset *= -1;
             }
             var cssValue = 'translateX('+offset+'%)';
-            var $sliderElm = this.$('.narrative-slider');
-            var $straplineHeaderElm = this.$('.narrative-strapline-header-inner');
+            var $sliderElm = this.$('.narrative__slider');
+            var $straplineHeaderElm = this.$('.narrative__strapline-header-inner');
 
             $sliderElm.css('transform', cssValue);
             $straplineHeaderElm.css('transform', cssValue);
@@ -177,9 +177,9 @@ define([
 
             var index = this.model.getActiveItem().get('_index');
             if (this.model.get('_isDesktop')) {
-                this.$('.narrative-content-item[data-index="'+index+'"]').a11y_focus();
+                this.$('.narrative__content-item[data-index="'+index+'"]').a11y_focus();
             } else {
-                this.$('.narrative-strapline-title').a11y_focus();
+                this.$('.narrative__strapline-title').a11y_focus();
             }
         },
 
@@ -190,12 +190,12 @@ define([
                 item.toggleVisited(true);
             }
 
-            var $slideGraphics = this.$('.narrative-slider-graphic');
-            this.$('.narrative-progress:visible').removeClass('selected').filter('[data-index="'+index+'"]').addClass('selected');
+            var $slideGraphics = this.$('.narrative__slider-graphic');
+            this.$('.narrative__progress:visible').removeClass('selected').filter('[data-index="'+index+'"]').addClass('selected');
             $slideGraphics.children('.controls').a11y_cntrl_enabled(false);
             $slideGraphics.filter('[data-index="'+index+'"]').children('.controls').a11y_cntrl_enabled(true);
-            this.$('.narrative-content-item').addClass('narrative-hidden').a11y_on(false).filter('[data-index="'+index+'"]').removeClass('narrative-hidden').a11y_on(true);
-            this.$('.narrative-strapline-title').a11y_cntrl_enabled(false).filter('[data-index="'+index+'"]').a11y_cntrl_enabled(true);
+            this.$('.narrative__content-item').addClass('narrative-hidden').a11y_on(false).filter('[data-index="'+index+'"]').removeClass('narrative-hidden').a11y_on(true);
+            this.$('.narrative__strapline-title').a11y_cntrl_enabled(false).filter('[data-index="'+index+'"]').a11y_cntrl_enabled(true);
 
             this.evaluateNavigation();
             this.evaluateCompletion();
@@ -212,8 +212,8 @@ define([
             var isAtStart = currentStage === 0;
             var isAtEnd = currentStage === itemCount - 1;
 
-            this.$('.narrative-control-left').toggleClass('narrative-hidden', isAtStart);
-            this.$('.narrative-control-right').toggleClass('narrative-hidden', isAtEnd);
+            this.$('.narrative__controls--left').toggleClass('narrative-hidden', isAtStart);
+            this.$('.narrative__controls--right').toggleClass('narrative-hidden', isAtEnd);
         },
 
         evaluateCompletion: function() {
@@ -240,9 +240,9 @@ define([
             var stage = this.model.getActiveItem().get('_index');
             var numberOfItems = this.model.get('_children').length;
 
-            if ($(event.currentTarget).hasClass('narrative-control-right')) {
+            if ($(event.currentTarget).hasClass('narrative__controls--right')) {
                 this.model.setActiveItem(++stage);
-            } else if ($(event.currentTarget).hasClass('narrative-control-left')) {
+            } else if ($(event.currentTarget).hasClass('narrative__controls--left')) {
                 this.model.setActiveItem(--stage);
             }
         },

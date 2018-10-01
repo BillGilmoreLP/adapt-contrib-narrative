@@ -1,5 +1,5 @@
 html.size-large .narrative-component {
-    .narrative-slide-container {
+    .narrative__slide-container {
         width: 60%;
         margin-right: 3%;
         float: left;
@@ -10,17 +10,17 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-slider-graphic {
+    .narrative__slider-graphic {
         margin-right: 0;
         width:60%;
     }
 
-    .narrative-strapline {
+    .narrative__strapline {
         display:none;
     }
 
-    .narrative-content-inner {
-        .narrative-controls {
+    .narrative__content-inner {
+        .narrative__controls {
             position: static;
             display: none;
             margin-top: 0px;
@@ -32,46 +32,46 @@ html.size-large .narrative-component {
                 margin: 0px;
             }
         }
-        .narrative-indicators {
+        .narrative__indicators {
             display: none;
             position: relative;
             top: -4px;
         }
-        .narrative-progress {
+        .narrative__progress {
             background-color: @item-color;
             &.selected {
                 background-color: @item-color-selected;
             }
         }
-        .narrative-content-item.narrative-hidden {
+        .narrative__content-item.narrative-hidden {
                 display: none;
         }
     }
 
-    .narrative-text-controls {
-        .narrative-content-inner {
+    .narrative__text-controls {
+        .narrative__content-inner {
             position: relative;
-            .narrative-controls-container {
+            .narrative__controls-container {
                 position: absolute;
                 width: 100%;
                 left: 0px;
                 top: 10px;
                 display: block;
             }
-            .narrative-controls {
+            .narrative__controls {
                 margin-bottom: 0px;
                 display: inline-block;
                 &.narrative-hidden {
                     visibility: hidden;
                 }
             }
-            .narrative-control-left {
+            .narrative__controls--left {
                 float:left;
             }
-            .narrative-control-right {
+            .narrative__controls--right {
                 float: right;
             }
-            .narrative-indicators {
+            .narrative__indicators {
                 display: inline-block;
                 width: auto;
                 position: absolute;
@@ -81,11 +81,11 @@ html.size-large .narrative-component {
             }
         }
 
-        .narrative-slide-container {
-            .narrative-controls {
+        .narrative__slide-container {
+            .narrative__controls {
                 display: none;
             }
-            .narrative-indicators {
+            .narrative__indicators {
                 display: none;
             }
         }
@@ -95,7 +95,7 @@ html.size-large .narrative-component {
 
 .narrative-component {
 
-    .narrative-content {
+    .narrative__content {
         width: 36%;
         background-color: @item-color;
         color: @item-text-color;
@@ -105,18 +105,18 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-content-inner {
+    .narrative__content-inner {
         padding:20px;
     }
 
-        .narrative-content {
+        .narrative__content {
             .size-small &,
             .size-medium & {
             display:none;
         }
     }
 
-    .narrative-slide-container {
+    .narrative__slide-container {
         width: 100%;
         position: relative;
         overflow-x: hidden;
@@ -126,7 +126,7 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-slider-graphic {
+    .narrative__slider-graphic {
         position: relative;
         float: left;
         .dir-rtl & {
@@ -134,11 +134,11 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-indicators {
+    .narrative__indicators {
         text-align: center;
     }
 
-    .narrative-progress {
+    .narrative__progress {
         width: (@icon-size/2);
         height: (@icon-size/2);
         display: inline-block;
@@ -152,7 +152,7 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-controls {
+    .narrative__controls {
         display: block;
         width: (@icon-size*2);
         height: (@icon-size*2);
@@ -177,7 +177,7 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-control-left {
+    .narrative__controls--left {
         left: 0;
 
         .dir-rtl & {
@@ -186,7 +186,7 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-control-right {
+    .narrative__controls--right {
         right: 0;
 
         .dir-rtl & {
@@ -195,21 +195,21 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-strapline {
+    .narrative__strapline {
         height: auto;
         position: relative;
     }
 
-    .narrative-strapline-header {
+    .narrative__strapline-header {
         overflow: hidden;
         position: relative;
     }
 
-    .narrative-strapline-header-inner {
+    .narrative__strapline-header-inner {
         position: relative;
     }
 
-    .narrative-strapline-title {
+    .narrative__strapline-title {
         position: relative;
         float: left;
         text-decoration: none;
@@ -245,7 +245,7 @@ html.size-large .narrative-component {
         }
     }
 
-    .narrative-strapline-title-inner {
+    .narrative__strapline-title-inner {
         height: (@item-padding-top + @item-padding-bottom + @icon-size);
         line-height: (@item-padding-top + @item-padding-bottom + @icon-size);
         padding-left: (@icon-size/2);
@@ -290,8 +290,8 @@ html.size-large .narrative-component {
     }
 
     &:not(.disable-animation) {
-        .narrative-slider,
-        .narrative-strapline-header-inner {
+        .narrative__slider,
+        .narrative__strapline-header-inner {
             transition: transform 400ms ease-in-out;
         }
     }
@@ -300,7 +300,7 @@ html.size-large .narrative-component {
 
 html.accessibility {
 
-    .narrative-control-left:focus, .narrative-control-left.focus {
+    .narrative__controls--left:focus, .narrative__controls--left.focus {
         left: extract(@focus-outline, 1);
         .dir-rtl & {
             left: inherit;
@@ -308,7 +308,7 @@ html.accessibility {
         }
     }
 
-    .narrative-control-right:focus, .narrative-control-right.focus {
+    .narrative__controls--right:focus, .narrative__controls--right.focus {
         right: extract(@focus-outline, 1);
         .dir-rtl & {
             right: inherit;
@@ -316,7 +316,7 @@ html.accessibility {
         }
     }
 
-    .narrative-strapline-title:focus .focus-rect {
+    .narrative__strapline-title:focus .focus-rect {
         outline: @focus-outline;
     }
 }
